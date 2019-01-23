@@ -128,7 +128,7 @@ if (canUseDOM && !attachEvent) {
     '; ';
 }
 
-var createStyles = function() {
+var createStyles = function(document) {
   if (!stylesCreated) {
     //opacity:0 works around a chrome bug https://code.google.com/p/chromium/issues/detail?id=286360
     var css = (animationKeyframes ? animationKeyframes : '') +
@@ -151,7 +151,7 @@ var createStyles = function() {
   }
 };
 
-var addResizeListener = function(element, fn) {
+var addResizeListener = function(document, element, fn) {
   if (element.parentNode === undefined) {
     var tempParentDiv = document.createElement('div');
     element.parentNode = tempParentDiv;
@@ -189,7 +189,7 @@ var addResizeListener = function(element, fn) {
   }
 };
 
-var removeResizeListener = function(element, fn) {
+var removeResizeListener = function(document, element, fn) {
   element = element.parentNode;
   if (attachEvent)
     element.detachEvent('onresize', fn);
